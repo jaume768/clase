@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .Formulari{
+            margin-right: 300px;
+            margin-left: 300px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .fons{
+            background-color: aqua;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        main{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: auto;
+            column-gap: 30px;
+            align-items: center;
+            padding-left: 300px;
+            padding-right: 300px;
+        
+        }
+
+        .imagen{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            position: relative;
+            bottom: 10px;
+        }
+
+        .dreta{
+            text-align: right;
+        }
+
+        p{
+            margin-top: 20px;
+        }
+
+        .tarjeta{
+            overflow: auto;
+            width: 300px;
+            height: 300px;
+            margin: 20px 30px 30px 0px;
+            margin-left: 30px;
+            box-shadow: 5px 10px #888888;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .menu{
+            background-color: rgb(187, 187, 187);
+            color: rgb(0, 0, 0);
+            height: 70px;
+        }
+
+        .menu_container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            /*amb aixo gestion l'espai entre la imatge i les opcions*/
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+        }
+
+        .menu_links{
+            height: 100%;
+            transition: transform .5s;
+            display: flex;
+        }
+
+        .menu_item{
+            list-style: none;
+            position: relative;
+            height: 100%;
+            /* Les seguents lineas son per crear les animacions amb css dels submenus desaparaguent*/
+            --clip: polygon(0 0, 100% 0, 100% 0, 0 0);
+            --transform: rotate(0);
+        }
+
+        .menu_link{
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 0 30px;
+            display: flex;
+            height: 100%;
+            align-items: center;
+        }
+
+        .menu_link:hover{
+            background-color:rgb(13, 128, 89);
+        }
+
+        .menu_item:hover{
+            /* Les seguents lineas son per crear les animacions amb css dels submenus aparaguent*/
+            --clip: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            --transform: rotate(90deg);
+        }
+
+        .menu_fletxa{
+            /* aixo es per fer que la imatge de la fletxa roti al moment de posar el mouse damunt*/
+            transform: var(--transform);
+            transition: transform .3s;
+            display: block;
+            margin-left: 3px;
+        }
+
+        .menu_nesting{
+            clip-path: var(--clip);
+            transition: clip-path .3s;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: max-content;
+            transform: translateY(100%);
+            background-color: rgb(187, 187, 187);
+        }
+
+        .menu_link--inside{
+            padding: 30px 100px 20px 20px;
+        }
+
+        .menu_link--inside:hover{
+            background-color:rgb(13, 128, 89);
+        }
+
+        .menu_desplegable{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .menu_img{
+            display: block;
+        }
+
+        @media(max-width:1000px){
+        
+            .menu_desplegable{
+                display: flex;
+            }
+        
+            main{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin: auto;
+                column-gap: 30px;
+                align-items: center;
+            }
+        
+            .tarjeta{
+                overflow: hidden;
+                min-width: 300px;
+                height: 300px;
+                box-shadow: 5px 10px #888888;
+                background-color: white;
+                border-radius: 10px;
+                padding: 20px;
+            }
+        
+            .menu_links{
+                position: fixed;
+                max-width: 400px;
+                width: 100%;
+                top: 70px;
+                bottom: 0;
+                right: 0;
+                background-color: rgb(187, 187, 187);
+                overflow-y: auto;
+                display: grid; /*aquesta linea i la seguent es per crear la forma en vertical del menu */
+                grid-auto-rows: max-content;
+                transform: translateX(100%);
+            }
+        
+            .menu_link{
+                padding: 25px;
+                padding-left: 30px;
+                height: auto;
+            }
+        
+            /*Aquesta classe s'introdueix per javascript al moment de voler desplegar el menu*/
+            .menu_links--show{
+                transform: unset;
+                width: 100%;
+            }
+        
+            /*aixo coloca la fletxa a la part dreta del menu*/
+            .menu_fletxa{
+                margin-left: auto;
+                margin-right: 20px;
+            }
+        
+            /*aixo es per crear un espai als submenus*/
+            .menu_nesting{
+                display: grid;
+                position: unset;
+                width: 100%;
+                transform: translateY(0);
+                /*amb les 2 seguents lineas puc crear que els submenus no surtin de manera automatica, despres amb javascript es pot fer el efecta que surt al moment del click*/
+                height: 0;
+                transition: height .3s;
+            }
+        
+            .menu_link--inside{
+                width: 90%;
+                margin-right: 0;
+                border-left: 1px solid rgb(13, 128, 89);
+            }
+        
+            .menu_item{
+                --clip:0;
+                overflow: hidden;
+            }
+        
+            /*cream la clase que s'introdueix o es suprimeix (als elements que tenen la clase .menu_item--show) per javascript al moment del click*/
+        
+            .menu_item--active{
+                --transform: rotate(90deg);
+                --background: rgb(13, 128, 89);
+            }
+        
+            .menu_item--show{
+                /*sa variable background es creada a la clase que s'introduiex o es suprimeix amb javascript mes abaix*/
+                background-color: var(--background);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="menu">
+            <section class="menu_container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Starlink_Logo.svg/1200px-Starlink_Logo.svg.png" alt="" width="150" height="70">
+                <ul class="menu_links">
+                    <li class="menu_item">
+                        <a href="" class="menu_link">Home</a>
+                    </li>
+        
+                    <li class="menu_item menu_item--show">
+                        <a href="#" class="menu_link">Menu 1 <img src="https://www.freeiconspng.com/thumbs/white-arrow-png/white-arrow-transparent-png-10.png" alt="" class="menu_fletxa" height="20px" width="30px"></a>
+        
+                        <ul class="menu_nesting">
+                            <li class="menu_inside">
+                                <a href="#" class="menu_link menu_link--inside">submenu 1</a>
+                            </li>
+                            <li class="menu_inside">
+                                <a href="#" class="menu_link menu_link--inside">submenu 2</a>
+                            </li>
+                            <li class="menu_inside">
+                                <a href="#" class="menu_link menu_link--inside">submenu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu_item menu_item--show">
+                        <a href="#" class="menu_link">Menu 2 <img src="https://www.freeiconspng.com/thumbs/white-arrow-png/white-arrow-transparent-png-10.png" alt="" class="menu_fletxa" height="20px" width="30px"></a>
+        
+                        <ul class="menu_nesting">
+                            <li class="menu_inside">
+                                <a href="#" class="menu_link menu_link--inside">submenu 1</a>
+                            </li>
+                            <li class="menu_inside">
+                                <a href="#" class="menu_link menu_link--inside">submenu 2</a>
+                            </li>
+                            <li class="menu_inside">
+                                <a href="#" class="menu_link menu_link--inside">submenu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+        
+                    <li class="menu_item">
+                        <a href="#" class="menu_link">Contacto</a>
+                    </li>
+        
+                </ul>
+                
+                <div class="menu_desplegable">
+                    <img src="http://www.rocamorasabor.com/images/menu.png" alt="" height="40px" width="40px" class="menu_img">
+                </div>
+            </section>
+        </nav>
+    </header>
+
+    <div class="fons" id="fons">
+        <fieldset class="Formulari">
+            <input type="number" id="NombreTarjetes" require>
+            <input type="color" id="ColorFons">
+            <button onclick="CanviarFons()">Enviar</button>
+        </fieldset>
+        
+
+        <main id="contenidor">
+        
+        </main>
+    </div>
+    
+    <script>
+        (function(){
+            const listElements = document.querySelectorAll('.menu_item--show');
+            const List = document.querySelector('.menu_links');
+            const menu = document.querySelector('.menu_desplegable');
+
+            const addClick = ()=>{
+                listElements.forEach(element =>{
+                    element.addEventListener('click', ()=>{
+
+                        let subMenu = element.children[1];
+                        let height = 0;
+                        element.classList.toggle('menu_item--active')
+
+                        if(subMenu.clientHeight === 0){
+                            height = subMenu.scrollHeight;
+                        }
+
+                        subMenu.style.height = `${height}px`;
+                    });
+                });
+            }
+
+            const BorrarHeight = ()=>{
+                listElements.forEach(element=>{
+                    if(element.children[1].getAttribute('style')){
+                        element.children[1].removeAttribute('style');
+                        element.children[1].remove('menu_item--active');
+                    }
+                });
+            }
+
+
+            window.addEventListener('resize', ()=>{
+                if(window.innerWidth >800){
+                    BorrarHeight();
+                    if(List.classList.contains('menu_links--show')){
+                        List.classList.remove('menu_links--show')
+                    }
+                }else{
+                    addClick();
+                }
+            });
+
+            if(window.innerWidth <= 800){
+
+            }else{
+                addClick();
+            }
+
+            menu.addEventListener('click', ()=>List.classList.toggle('menu_links--show'));
+        })();
+
+        const url = 'https://jsonplaceholder.typicode.com/comments'
+        
+        function CanviarFons(){
+            let color = document.getElementById("ColorFons").value;
+            let NombreTarjetas = document.getElementById("NombreTarjetes").value;
+            document.getElementById("fons").style.backgroundColor = color;
+
+            fetch(url)
+            .then(response => response.json())
+            .then(data => mostrarData(data))
+            const mostrarData = (data) => {
+                console.log(data)
+                let cuerpo = ''
+                for(let i = 0; i < NombreTarjetas; i++){
+                
+                    cuerpo += `<div class="tarjeta">
+                    <img src="http://placeimg.com/640/480/${data[i].id}" alt="" class="imagen">
+                    <h2><b>${data[i].name}</b></h2>
+                    <p><b>${data[i].body}</b></p>
+                    <p class="dreta">ID: ${data[i].id}</p>
+                    </div>`
+                
+                }
+            
+                document.getElementById('contenidor').innerHTML = cuerpo
+            }
+        }
+    </script>
+</body>
+</html>

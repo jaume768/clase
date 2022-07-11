@@ -1,0 +1,30 @@
+version: '3'
+services:
+  php:
+    build:
+      context: ./arxius
+      dockerfile: Dockerfile
+    volumes:
+      - ./arxius:/var/www/html
+    expose:
+      - 80
+    ports:
+      - 80:80    
+  basededades:
+    image: mariadb:10.7
+    environment:
+      - MARIADB_ROOT_PASSWORD=sistemes
+      - MARIADB_DATABASE=si
+      - MARIADB_USER=daw
+      - MARIADB_PASSWORD=12345678
+    expose:
+      - 3307
+    ports:
+      - 3307:3306     
+  adminer:
+    image: adminer:4.8.1
+    expose:
+      - 8082
+    ports:
+      - 8082:8080        
+

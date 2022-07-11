@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        main {
+
+            background-color: rgb(76, 35, 143);
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 19px;
+            color: aliceblue;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
+        }
+
+        body {
+
+            background-color: rgb(124, 143, 204);
+            margin-right: 300px;
+            margin-left: 300px;
+
+        }
+
+        div {
+            
+            margin-left: 10px;
+            margin-bottom: 5px;
+
+        }
+
+        #taula{
+
+            text-align: center;
+
+        }
+        
+        fieldset{
+
+            margin-bottom: 15px;
+
+        }
+
+        button{
+
+            margin-left: 350px;
+            margin-right: 350px;
+            background-color: rgb(155, 125, 211);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer; 
+
+        }
+
+        .fondo{
+
+            background-color: rgb(103, 56, 180);
+
+        }
+
+        #titol{
+            text-align: center;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1 id = "titol"><u>Formulari</u></h1>
+        <p>Tots els camps amb * son obligatoris</p>
+        <form action="https://httpbin.org/get" method="get">
+            <fieldset class="fondo">
+                <legend>DADES PERSONALS</legend>
+                <div>
+                    <label>
+                        Nom*:
+                        <input type="text" name="Nom" required>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Llinatge*:
+                        <input type="text" name="Llinatge" required>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Any Naixement*:
+                        <input type="date" name="anyNaixement1" required>
+                    </label>
+                </div>
+                <div>
+                    Nacionalidad*:
+                    <input type="list" name="nacionalidad" list="list_pais" required>
+                    <datalist id="list_pais">
+                        <option value="es">España</option>
+                        <option value="an">Andorra</option>
+                        <option value="fr">França</option>
+                        <option value="it">Italia</option>
+                    </datalist>
+                
+                </div>
+                <div>
+                    <label for="">
+                        Introdueix el teu DNI*:
+                        <input type="text" name="dni" pattern="[0-9]{8}[A-Za-z]{1}" required/>
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        Telefono*:
+                        <input type="tel" name="telephone" required>
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        Email*:
+                        <input type="email" name="email" required>
+                    </label>
+                </div>
+                <div>
+                    Contrasenya:
+                    <label for="">
+                        <input type="password" name="password">
+                    </label>
+                </div>
+                <div>
+                    Repeteix la contrasenya:
+                    <label for="">
+                        <input type="password" name="password">
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset class="fondo">
+                <legend>DADES DE RESERVA</legend>
+                <div>
+                    <label for="">
+                        Data i hora check-in*:
+                        <input type="datetime-local" name="check-in" required>
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        Data i hora check-out*:
+                        <input type="datetime-local" name="check-out" required>
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        Nombre de persones adultes *:  
+                        <input type="number" required>
+                    </label>
+                </div>
+                <div>
+                    <label for="">
+                        Nombre de nins:  
+                        <input type="number">
+                    </label>
+                </div>
+                <br>
+                <div>
+                    <select id="taula" name="habitacio" multiple required>
+                        <optgroup label="Nombre habitació">
+                            <option value="primera">01</option>
+                            <option value="segona">02</option>
+                            <option value="tercera">03</option>
+                            <option value="cuarta">04</option>
+                            <option value="primera">05</option>
+                            <option value="segona">06</option>
+                            <option value="tercera">07</option>
+                            <option value="cuarta">08</option>
+                            <option value="cuarta">09</option>
+                        </optgroup>
+                    </select>
+                    <select id="taula" name="habitacio" multiple required>
+                        <optgroup label="Tipo de habitació">
+                            <option value="primera">VIP</option>
+                            <option value="segona">Normal</option>
+                            <option value="tercera">Classic</option>
+                            <option value="tercera">Low cost</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div>
+                    Tipus de pensio: <br>
+                    <label>
+                        sense
+                        <input type="radio" name="TipusPensio" vale="sense">
+                    </label>
+                    <label>
+                        mitja 
+                        <input type="radio" name="TipusPensio" value="mitja">
+                    </label>
+                    <label>
+                        completa
+                        <input type="radio" name="TipusPensio" value="completa">
+                    </label>
+                </div>
+                <div>
+                    Extres: <br>
+                    <label>
+                        Esmorzar a l’habitació
+                        <input type="checkbox" name="Extres" value="Esmorzar">
+                    </label>
+                    <label>
+                        Minibar
+                        <input type="checkbox" name="Extres" value="Minibar">
+                    </label>
+                    <label>
+                        Spa
+                        <input type="checkbox" name="Extres" value="Spa">
+                    </label>
+                    <label>
+                        Parking propi
+                        <input type="checkbox" name="Extres" value="Parking">
+                    </label>
+                    <label>
+                        Piscina
+                        <input type="checkbox" name="Extres" value="Piscina">
+                    </label>
+                    <label>
+                        Buffet
+                        <input type="checkbox" name="Extres" value="Buffet">
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset class="fondo">
+                <legend>DADES DE PAGAMENT</legend>
+                <div>
+                    Tipus de pagament: <br>
+                    <label>
+                        Targeta crèdit:
+                        <input type="radio" name="TipusPensio" vale="sense">
+                    </label>
+                    <label>
+                        Ingrés:
+                        <input type="radio" name="TipusPensio" value="mitja">
+                    </label>
+                    <label>
+                        Efectiu:
+                        <input type="radio" name="TipusPensio" value="completa">
+                    </label>
+                </div>
+                <br>
+                <div>
+                    <label>
+                        Introdueix la targeta crèdit:
+                        <input type="text" name="Targeta">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Ingrés:
+                        <input type="text" name="Ingrés">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Efectiu:
+                        <input type="text" name="Efectiu">
+                    </label>
+                </div>
+            </fieldset>
+
+            <button>Enviar</button>
+
+        </form>
+    </main>
+</body>
+</html>

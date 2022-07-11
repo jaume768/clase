@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Formularis</title>
+</head>
+
+<body>
+    <h1>Introducció a formularis HTML5</h1>
+
+    <form action="https://httpbin.org/get" method="get">
+
+        <fieldset>
+            <legend>Dades Personals</legend>
+            <div>
+                <label for="nom">Nom</label>
+                <input type="text" name="nom" id="nom" placeholder="Nom de la persona" required>
+            </div>
+
+            <div>
+                <label>
+                    Llinatge 1
+                    <input type="text" name="llinatge1" value="Prohens" disabled>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Any Naixement
+                    <input type="date" name="anyNaixement1">
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Any Naixement i hora
+                    <input type="datetime-local" name="anyHoraNaixement">
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Any Naixement i hora
+                    <input type="date" name="anyNaixement2">
+                    <input type="time" name="horaNaixement">
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    Edat
+                    <input type="number" name="edat">
+                </label>
+            </div>
+        </fieldset>
+
+        <div>
+            <label>
+                Search
+                <input type="search" name="busca">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Contrassenya
+                <input type="password" name="pass">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Telèfon
+                <input type="tel" name="telefon">
+            </label>
+        </div>
+        <div>
+            <label>
+                Correu electrònic
+                <input type="email" name="email">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Tria color
+                <input type="color" name="color">
+            </label>
+        </div>
+
+        <div>
+            <label>
+                Rang
+                <input type="range" name="rang">
+            </label>
+        </div>
+
+        <input type="reset" value="Reiniciar">
+
+        <button>Enviar</button>
+    </form>
+
+    <hr>
+
+    <form action="https://httpbin.org/get">
+        <label>
+            Estudiant
+            <input type="radio" name="situacio" value="student">
+        </label>
+        <label>
+            Treballant
+            <input type="radio" name="situacio" value="working">
+        </label>
+        <label>
+            Atur
+            <input type="radio" name="situacio" value="sleeping">
+        </label>
+
+        <div>
+            <label>
+                Moix
+                <input type="radio" name="animal" vale="cat">
+            </label>
+            <label>
+                Ca
+                <input type="radio" name="animal" value="dog">
+            </label>
+            <label>
+                Anaconda
+                <input type="radio" name="animal" value="anaconda">
+            </label>
+        </div>
+
+
+        <div>
+            <label>
+                Skate
+                <input type="checkbox" name="hobbie" value="skate">
+            </label>
+            <label>
+                kayak
+                <input type="checkbox" name="hobbie" value="kayak">
+            </label>
+            <label>
+                Basket
+                <input type="checkbox" name="hobbie" value="basket">
+            </label>
+            <label>
+                Videojocs
+                <input type="checkbox" name="hobbie" value="gaming">
+            </label>
+
+        </div>
+
+        <select name="pais" multiple>
+            <optgroup label="Europa">
+                <option value="es">España</option>
+                <option value="an">Andorra</option>
+                <option value="fr">Franjça</option>
+                <option value="it">Italia</option>
+            </optgroup>
+
+            <optgroup label="America">
+                <option value="bo">Bolivia</option>
+                <option value="us">EEUU</option>
+                <option value="mx">Mèxic</option>
+            </optgroup>
+
+        </select>
+
+        <div>
+            <input type="list" name="llista" list="list_pais">
+            <datalist id="list_pais">
+                <option value="es">España</option>
+                <option value="an">Andorra</option>
+                <option value="fr">Franjça</option>
+                <option value="it">Italia</option>
+            </datalist>
+
+        </div>
+
+        <button>Enviar</button>
+
+
+
+    </form>
+
+
+</body>
+
+</html>
